@@ -20,4 +20,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "Task"
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
+include(":core:network")
