@@ -17,6 +17,10 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
+        buildConfigField("String", "API_KEY", "\"${properties.getProperty("API_KEY")}\"")
+        buildConfigField("String", "BASE_URL", "\"https://yj8ke8qonl.execute-api.eu-west-1.amazonaws.com/\"")
     }
 
     buildTypes {
