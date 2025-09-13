@@ -33,6 +33,20 @@ android {
 }
 
 dependencies {
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(projects.core.common)
+
+    val composeBom = platform(libs.androidx.compose.bom)
+    api(composeBom)
+    androidTestImplementation(composeBom)
+    api(libs.androidx.ui.test.manifest)
+    api(libs.androidx.junit)
+    api(libs.androidx.espresso.core)
+    api(libs.androidx.ui.test.junit4)
+    api(libs.truth)
+    api(libs.hilt.test)
+    api(libs.navigation.test)
+    api(libs.androidx.runner)
+    api(libs.androidx.core)
+    api(libs.coroutines.test)
+    api(libs.androidx.activity.compose)
 }

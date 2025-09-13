@@ -15,7 +15,7 @@ android {
     defaultConfig {
         minSdk = 24
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.mahnoosh.home.HiltTestRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
@@ -74,8 +74,7 @@ dependencies {
     // serialisation
     implementation(libs.kotlinx.serialization.json)
 
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    kaptAndroidTest(libs.hilt.kapt)
 }
 // Allow references to generated code
 kapt {
