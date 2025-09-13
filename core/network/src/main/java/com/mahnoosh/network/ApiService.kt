@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface ApiService {
     @GET("characters")
-    suspend fun fetchCurrentWeather(): Response<List<CharacterDTO>>
+    suspend fun fetchCharacters(): Response<List<CharacterDTO>>
 }
