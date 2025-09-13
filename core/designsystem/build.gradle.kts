@@ -1,15 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.dagger.hilt.android)
-    alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.kotlin.parcelize)
-    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.compose)
 }
 
 android {
-    namespace = "com.mahnoosh.home"
+    namespace = "com.mahnoosh.designsystem"
     compileSdk = 36
 
     defaultConfig {
@@ -41,13 +37,6 @@ android {
 }
 
 dependencies {
-    // projects
-    implementation(projects.core.threading)
-    implementation(projects.core.network)
-    implementation(projects.core.common)
-    implementation(projects.core.designsystem)
-    androidTestImplementation(projects.core.testing.ui)
-    testImplementation(projects.core.testing.unit)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -65,19 +54,4 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-
-    // hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-    implementation(libs.hilt.navigation.compose)
-
-    // serialisation
-    implementation(libs.kotlinx.serialization.json)
-
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-}
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
 }

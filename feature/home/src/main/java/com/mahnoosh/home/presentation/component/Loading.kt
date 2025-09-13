@@ -29,6 +29,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.mahnoosh.common.constants.UiTags
+import com.mahnoosh.designsystem.ui.ThemePreviews
+import com.mahnoosh.designsystem.ui.theme.TaskTheme
 
 @Composable
 fun ShimmerLazyColumn() {
@@ -136,5 +138,15 @@ private fun ShimmerEffect(
                 .matchParentSize()
                 .background(brush)
         )
+    }
+}
+
+@ThemePreviews
+@Composable
+internal fun ShimmerLazyColumnPreview() {
+    TaskTheme {
+        Column {
+            ShimmerLazyColumn()
+        }
     }
 }

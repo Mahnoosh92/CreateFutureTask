@@ -1,4 +1,4 @@
-package com.mahnoosh.task.ui.theme
+package com.mahnoosh.designsystem.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

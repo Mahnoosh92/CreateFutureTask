@@ -46,6 +46,7 @@ dependencies {
     implementation(projects.core.network)
     implementation(projects.feature.home)
     implementation(projects.feature.detail)
+    implementation(projects.core.designsystem)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

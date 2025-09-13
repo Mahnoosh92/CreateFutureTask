@@ -11,8 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.mahnoosh.designsystem.ui.theme.TaskTheme
 import com.mahnoosh.task.navigation.AppNavGraph
-import com.mahnoosh.task.ui.theme.TaskTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -27,8 +27,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.mahnoosh.common.constants.UiTags
+import com.mahnoosh.designsystem.ui.ThemePreviews
+import com.mahnoosh.designsystem.ui.theme.TaskTheme
 import com.mahnoosh.home.R
 import com.mahnoosh.home.domain.model.Character
 
@@ -132,6 +135,34 @@ private fun ItemRow(
             modifier = Modifier.padding(horizontal = 16.dp),
             text = value,
             textAlign = TextAlign.End
+        )
+    }
+}
+
+@ThemePreviews
+@Composable
+internal fun CharactersListPreview(
+    @PreviewParameter(CharactersProvider::class) characters: List<Character>
+) {
+    TaskTheme {
+        CharactersList(
+            isRefreshing = false,
+            characters = characters,
+            onRefresh = { /* Handle refresh */ }
+        )
+    }
+}
+
+@ThemePreviews
+@Composable
+internal fun CharactersListRefreshingPreview(
+    @PreviewParameter(CharactersProvider::class) characters: List<Character>
+) {
+    TaskTheme {
+        CharactersList(
+            isRefreshing = true,
+            characters = characters,
+            onRefresh = { /* Handle refresh */ }
         )
     }
 }
