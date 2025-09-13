@@ -13,4 +13,9 @@ internal sealed interface HomeEvent {
      * Represents an event to consume and clear any existing error messages
      */
     data object ConsumeErrorMessage : HomeEvent
+
+    /**
+     * Represents an event to search for character based on a given name
+     */
+    data class Search(val name: String) : HomeEvent
 }

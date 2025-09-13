@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="error_general">Something went wrong</string>
+    <string name="search_hint">Search character</string>
+    <string name="title">Game of thrones</string>
+    <string name="close">Close</string>
+    <string name="search">Search</string>
+    <string name="died">Died</string>
+    <string name="culture">Culture</string>
+    <string name="name">Name</string>
+    <string name="seasons">Seasons</string>
 </resources>

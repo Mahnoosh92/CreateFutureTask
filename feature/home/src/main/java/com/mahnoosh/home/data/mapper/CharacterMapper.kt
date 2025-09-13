@@ -1,5 +1,6 @@
 package com.mahnoosh.home.data.mapper
 
+import com.mahnoosh.common.toRomanNumeralList
 import com.mahnoosh.home.domain.model.Character
 import com.mahnoosh.network.model.CharacterDTO
 
@@ -11,7 +12,7 @@ internal fun CharacterDTO.toCharacter() = Character(
     died = died ?: "",
     titles = titles?.map { it ?: "" } ?: emptyList(),
     aliases = aliases?.map { it ?: "" } ?: emptyList(),
-    tvSeries = tvSeries?.map { it ?: "" } ?: emptyList(),
+    tvSeries = tvSeries?.map { it ?: "" }?.toRomanNumeralList() ?: emptyList(),
     playedBy = playedBy?.map { it ?: "" } ?: emptyList(),
     father = father ?: "",
     mother = mother ?: "",

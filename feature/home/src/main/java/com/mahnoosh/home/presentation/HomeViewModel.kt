@@ -25,6 +25,26 @@ internal class HomeViewModel @Inject constructor(
     private val _homeUiState = MutableStateFlow<HomeUiState>(HomeUiState.Idle)
     val homeUiState = _homeUiState.asStateFlow()
 
+    private val _searchQuery = MutableStateFlow("")
+    val searchQuery = _searchQuery.asStateFlow()
+
+    val filteredCharacters = combine(homeUiState, searchQuery) { uiState, query ->
+        if (uiState is HomeUiState.Success) {
+            filterCharacters(uiState.characters, query)
+        } else {
+            emptyList()
+        }
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5_000),
+        initialValue = emptyList()
+    )
+
+    private fun filterCharacters(characters: List<Character>, name: String) =
+        characters.filter { character ->
+            character.name.lowercase().contains(name.lowercase())
+        }
+
     private fun getCharacters(
         isRefreshing: Boolean = false,
     ) {
@@ -82,6 +102,10 @@ internal class HomeViewModel @Inject constructor(
 
             is HomeEvent.GetCharacters -> {
                 getCharacters(isRefreshing = event.isRefreshing)
+            }
+
+            is HomeEvent.Search -> {
+                _searchQuery.value = event.name
             }
         }
     }
