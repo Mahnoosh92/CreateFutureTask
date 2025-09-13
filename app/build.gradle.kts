@@ -44,6 +44,8 @@ android {
 dependencies {
     // internal projects
     implementation(projects.core.network)
+    implementation(projects.feature.home)
+    implementation(projects.feature.detail)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -57,6 +59,10 @@ dependencies {
     // di
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+
+    // Navigation
+    implementation(libs.navigation.compose)
 
     testImplementation(libs.junit)
 
