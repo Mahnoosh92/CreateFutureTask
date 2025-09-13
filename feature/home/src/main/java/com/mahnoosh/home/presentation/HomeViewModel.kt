@@ -1,5 +1,6 @@
 package com.mahnoosh.home.presentation
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mahnoosh.common.stringresolver.StringResolver
@@ -74,7 +75,8 @@ internal class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun setHomeUiStateToSuccess(
+    @VisibleForTesting
+    fun setHomeUiStateToSuccess(
         characters: List<Character>?
     ) {
         _homeUiState.update {
@@ -82,7 +84,8 @@ internal class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun setHomeUiStateToError(message: String) {
+    @VisibleForTesting
+    fun setHomeUiStateToError(message: String) {
         _homeUiState.update {
             HomeUiState.Error(errorMessage = message)
         }
