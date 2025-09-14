@@ -34,6 +34,8 @@ fun AppNavGraph(
             )
         }
 
-        detailScreen()
+        detailScreen {
+            navController.navigateUp()
+        }
     }
 }

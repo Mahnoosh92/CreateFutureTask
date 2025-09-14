@@ -45,6 +45,7 @@ dependencies {
     implementation(projects.core.threading)
     implementation(projects.core.network)
     implementation(projects.core.common)
+    implementation(projects.core.designsystem)
     androidTestImplementation(projects.core.testing.ui)
     testImplementation(projects.core.testing.unit)
 

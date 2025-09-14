@@ -50,14 +50,14 @@ object CustomNavType {
     }
 }
 
-fun NavGraphBuilder.detailScreen() {
+fun NavGraphBuilder.detailScreen(onBackClick: () -> Unit,) {
     composable<DetailRoute>(
         typeMap = mapOf(
             typeOf<DetailUiModel>() to CustomNavType.detailUiModelNavType,
         )
     ) { backStackEntry ->
         val detailRoute = backStackEntry.toRoute<DetailRoute>()
-        DetailScreen(uiModel = detailRoute.uiModel)
+        DetailScreen(uiModel = detailRoute.uiModel, onBackClick = onBackClick)
     }
 }
 
