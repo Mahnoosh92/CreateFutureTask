@@ -1,6 +1,6 @@
 package com.mahnoosh.home.domain.model
 
-internal data class Character(
+data class Character(
     val name: String,
     val gender: String,
     val culture: String,

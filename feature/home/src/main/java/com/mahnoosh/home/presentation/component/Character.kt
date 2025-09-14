@@ -2,6 +2,7 @@
 
 package com.mahnoosh.home.presentation.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -41,6 +42,7 @@ internal fun CharactersList(
     isRefreshing: Boolean,
     characters: List<Character>,
     onRefresh: () -> Unit,
+    navigateToDetail: (Character) -> Unit,
     modifier: Modifier = Modifier
 ) {
     val pullRefreshState = rememberPullToRefreshState()
@@ -65,7 +67,8 @@ internal fun CharactersList(
                     modifier = Modifier
                         .padding(top = 16.dp)
                         .fillMaxWidth(),
-                    character = character
+                    character = character,
+                    navigateToDetail = navigateToDetail
                 )
             }
         }
@@ -74,8 +77,9 @@ internal fun CharactersList(
 
 @Composable
 private fun CharacterItem(
-    modifier: Modifier = Modifier,
-    character: Character
+    character: Character,
+    navigateToDetail: (Character) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     Card(
         colors = CardDefaults.cardColors(
@@ -83,6 +87,7 @@ private fun CharacterItem(
             contentColor = MaterialTheme.colorScheme.onSurface
         ),
         modifier = modifier
+            .clickable(onClick = { navigateToDetail(character) })
             .clip(MaterialTheme.shapes.small)
             .height(IntrinsicSize.Min)
             .testTag(UiTags.HomeScreen.CHARACTER_ITEM),
@@ -148,7 +153,8 @@ internal fun CharactersListPreview(
         CharactersList(
             isRefreshing = false,
             characters = characters,
-            onRefresh = { /* Handle refresh */ }
+            onRefresh = { /* Handle refresh */ },
+            navigateToDetail = { }
         )
     }
 }
@@ -162,7 +168,8 @@ internal fun CharactersListRefreshingPreview(
         CharactersList(
             isRefreshing = true,
             characters = characters,
-            onRefresh = { /* Handle refresh */ }
+            onRefresh = { /* Handle refresh */ },
+            navigateToDetail = { }
         )
     }
 }

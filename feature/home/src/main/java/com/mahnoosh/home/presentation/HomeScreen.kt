@@ -30,6 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mahnoosh.common.constants.UiTags
 import com.mahnoosh.home.R
+import com.mahnoosh.home.domain.model.Character
 import com.mahnoosh.home.presentation.component.CharactersList
 import com.mahnoosh.home.presentation.component.LoadingItem
 import com.mahnoosh.home.presentation.component.ShimmerLazyColumn
@@ -38,7 +39,7 @@ import com.mahnoosh.home.presentation.component.ShimmerLazyColumn
 @Composable
 internal fun HomeScreen(
     viewModel: HomeViewModel,
-    navigateToDetail: () -> Unit,
+    navigateToDetail: (Character) -> Unit,
     modifier: Modifier = Modifier
 ) {
     LaunchedEffect(Unit) {
@@ -164,6 +165,7 @@ internal fun HomeScreen(
                                     )
                                 )
                             },
+                            navigateToDetail = navigateToDetail
                         )
                     }
 
