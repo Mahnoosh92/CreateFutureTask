@@ -29,6 +29,9 @@ internal class HomeViewModel @Inject constructor(
     private val _searchQuery = MutableStateFlow("")
     val searchQuery = _searchQuery.asStateFlow()
 
+    private val _isSearchVisible = MutableStateFlow(false)
+    val isSearchVisible = _isSearchVisible.asStateFlow()
+
     val filteredCharacters = combine(homeUiState, searchQuery) { uiState, query ->
         if (uiState is HomeUiState.Success) {
             filterCharacters(uiState.characters, query)
@@ -45,6 +48,14 @@ internal class HomeViewModel @Inject constructor(
         characters.filter { character ->
             character.name.lowercase().contains(name.lowercase())
         }
+
+    fun clearSearchQuery() {
+        _searchQuery.value = ""
+    }
+
+    fun toggleSearchVisibility() {
+        _isSearchVisible.value = !_isSearchVisible.value
+    }
 
     private fun getCharacters(
         isRefreshing: Boolean = false,

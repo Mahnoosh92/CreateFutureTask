@@ -48,6 +48,7 @@ internal fun HomeScreen(
 
     val homeUiState by viewModel.homeUiState.collectAsStateWithLifecycle()
     val searchQuery by viewModel.searchQuery.collectAsStateWithLifecycle()
+    val isSearchVisible by viewModel.isSearchVisible.collectAsStateWithLifecycle()
     val filteredCharacters by viewModel.filteredCharacters.collectAsStateWithLifecycle()
     val screenState = rememberHomeScreenState()
 
@@ -60,13 +61,12 @@ internal fun HomeScreen(
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
                 title = {
-                    AnimatedContent(screenState.isSearchVisible) { isSearchIconVisible ->
+                    AnimatedContent(isSearchVisible) { isSearchIconVisible ->
                         if (isSearchIconVisible) {
                             TextField(
                                 value = searchQuery,
                                 onValueChange = { newQuery ->
                                     viewModel.onEvent(HomeEvent.Search(newQuery))
-                                    screenState.updateSearchQuery(newQuery)
                                 },
                                 modifier = Modifier.fillMaxWidth(),
                                 colors = TextFieldDefaults.colors(
@@ -91,18 +91,18 @@ internal fun HomeScreen(
                 },
                 actions = {
                     IconButton(onClick = {
-                        if (screenState.isSearchVisible) {
-                            if (screenState.searchQuery.isEmpty()) {
-                                screenState.toggleSearchVisibility()
+                        if (isSearchVisible) {
+                            if (searchQuery.isEmpty()) {
+                                viewModel.toggleSearchVisibility()
                             } else {
-                                screenState.clearSearchQuery()
+                                viewModel.clearSearchQuery()
                                 viewModel.onEvent(HomeEvent.Search(""))
                             }
                         } else {
-                            screenState.toggleSearchVisibility()
+                            viewModel.toggleSearchVisibility()
                         }
                     }) {
-                        AnimatedContent(screenState.isSearchVisible) { isSearchIconVisible ->
+                        AnimatedContent(isSearchVisible) { isSearchIconVisible ->
                             if (isSearchIconVisible) {
                                 Icon(
                                     Icons.Default.Close,
