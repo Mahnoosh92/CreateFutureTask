@@ -69,5 +69,4 @@ dagger-hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hi
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt"}
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-kotlin-parcelize = { id = "kotlin-parcelize" }
 

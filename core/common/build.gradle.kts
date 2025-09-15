@@ -35,6 +35,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.core.threading)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
